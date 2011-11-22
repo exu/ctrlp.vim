@@ -1,11 +1,8 @@
 " =============================================================================
 " File:          autoload/ctrlp/tagsearch.vim
-" Description:   Example extension for ctrlp.vim
+" Description:   Simple tagsearch extension
+" Author:        Jacek Wysocki <jacek.wysocki@gmail.com>
 " =============================================================================
-
-" You can rename anything that has 'tagsearch' in it.
-" ctrlp only looks for g:ctrlp_ext_vars
-"
 "
 " To load this extension into ctrlp, add this to your vimrc:
 "
@@ -18,7 +15,7 @@
 "     let g:ctrlp_extensions = [
 "         \ 'my_extension',
 "         \ 'my_other_extension',
-"         \ 'someone_elses_extension',
+"         \ 'tagsearch',
 "         \ ]
 
 
@@ -64,20 +61,7 @@ func! ctrlp#tagsearch#init()
     call add(out, tg.name)
   endfor
 
-  " echo out
-
   retu out
-
-
-	let input = [
-		\ 'Sed sodales fri magna, non egestas ante consequat nec.',
-		\ 'Aenean vel enim mattis ultricies erat.',
-		\ 'Donec vel ipsummauris euismod feugiat in ut augue.',
-		\ 'Aenean porttitous quam, id pellentesque diam adipiscing ut.',
-		\ 'Maecenas luctuss ipsum, vitae accumsan magna adipiscing sit amet.',
-		\ 'Nulla placerat  ante, feugiat egestas ligula fringilla vel.',
-		\ ]
-	retu input
 endfunc
 
 
@@ -89,8 +73,8 @@ endfunc
 "  a:str    the selected string
 func! ctrlp#tagsearch#accept(mode, str)
 	" For this example, just exit ctrlp and run help
-	cal ctrlp#exit()
-	help ctrlp-extending
+  execute "tag " . a:str
+  " tag a:str
 endfunc
 
 
